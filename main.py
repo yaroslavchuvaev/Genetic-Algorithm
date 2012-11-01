@@ -1,5 +1,5 @@
 import os
-import algorithm
+from algorithm import algorithm
 from fitness import fitness_function
 
 
@@ -13,4 +13,4 @@ alg = algorithm(
 		Fit.limit_min,
 		Fit.limit_max)
 
-print alg.population
+alg.print_population()
