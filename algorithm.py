@@ -83,7 +83,7 @@ class algorithm:
 
 		for x in xrange(0,len(self.descendants)):
 			chromosome = float_to_binary( self.descendants[x]['value'])
-			gen = random.randint(32,63)
+			gen = random.randint(0,63)
 
 			if chromosome[gen] == '0':
 				chromosome = chromosome[:gen] + '1' + chromosome[gen+1:]
@@ -95,14 +95,19 @@ class algorithm:
 
 # reduction
 	def reduction(self):
+		Fit = fitness_function()
+
 		for x in xrange(0,len(self.descendants)):
-			self.population.append(self.descendants[x])
+			if self.descendants[x]['value'] > Fit.min and self.descendants[x]['value'] <= Fit.max:
+				self.population.append(self.descendants[x])
+
 		self.population.sort(reverse=True)
 		self.population = self.population[:self.pop_size]
 	
 
 # population maximum
 	def pop_max(self):
+		Fit = fitness_function()
 		max = -999999999
 		ind = 0
 		for x in xrange(0,self.pop_size):
@@ -112,7 +117,8 @@ class algorithm:
 		print 'Population maximum in x=',
 		print self.population[ind]['value'],
 		print ' f(x)=',
-		print max
+		print max,' / ',Fit.optium
+
 
 
 # print the current population

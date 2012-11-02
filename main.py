@@ -13,7 +13,7 @@ epochn = int(input('Enter the number of the epoches: '))
 
 alg = algorithm(start_population_size,parents_n)
 epoch = 0
-while epoch < epochn:
+while epoch <= epochn:
 	print 'Epoch #',epoch
 	alg.pop_max()
 	alg.selection()
