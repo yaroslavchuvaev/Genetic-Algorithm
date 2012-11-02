@@ -1,16 +1,20 @@
 import os
 from algorithm import algorithm
-from fitness import fitness_function
 
 
-start_population_size = int(
-	input('Eneter the size of initial population: '))
 
-Fit = fitness_function()
+start_population_size = int(input('Eneter the size of initial population: '))
 
-alg = algorithm(
-		start_population_size,
-		Fit.limit_min,
-		Fit.limit_max)
+parents_n = int(input('Enter the number of parents, %: '))
+	
+epochn = int(input('Enter the number of the epoches: '))
 
-alg.print_population()
+
+alg = algorithm(start_population_size,parents_n)
+epoch = 1
+#while epoch <= epochn:
+	alg.selection()
+
+
+
+
