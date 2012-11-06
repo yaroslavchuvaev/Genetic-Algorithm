@@ -1,5 +1,6 @@
 # -*- coding: UTF-8 -*-
 
+# линейный поиск экстремума
 from fitness import *
 
 Fit = fitness_function()

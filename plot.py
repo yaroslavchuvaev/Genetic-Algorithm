@@ -46,9 +46,10 @@ class plot:
 		x = self.get_x(population)
 		y = self.get_y(population)
 
-		
+		dx = self.get_dx(descendants)
+		dy = self.get_dy(descendants)				
 
 		plt.subplot(211)
-		plt.plot(t,Fit.f(t),'b-', x,y,'og')
+		plt.plot(t,Fit.f(t),'b-', dx,dy,'or', x,y,'og')
 
 		plt.draw()
