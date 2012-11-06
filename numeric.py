@@ -1,4 +1,6 @@
-# convert the integer to binary string
+# -*- coding: UTF-8 -*-
+
+# преобразует целое в двоичное представление
 def int_to_binary(int_num):
 	n = ""
 	while int_num > 0:
@@ -10,7 +12,7 @@ def int_to_binary(int_num):
 		n = '0'+n
 	return n
 
-# convert the float to binary string
+# преобразует число с плавающей точкой в двоичное представление 
 def float_to_binary(float_num):
 	parts = str(float_num).split('.')
 	int_n = int_to_binary(int(parts[0]))
@@ -20,11 +22,11 @@ def float_to_binary(float_num):
 		float_n += '0'
 	return int_n + float_n
 
-# convert the binary to integer
+# преобразует двоичное представление в целое число
 def binary_to_int(binary):
 	return int(binary,2)
 
-# convert the binary to integer
+# преобразует двоичное представление в число с плавающей точкой
 def binary_to_float(binary):
 	int_part = binary_to_int(binary[:32])#0-31 - int
 	float_part = binary_to_int(binary[32:])#32-63 - float

@@ -1,23 +1,29 @@
+# -*- coding: UTF-8 -*-
+
+# Модуль описания алгоритма
+
 import random
 from fitness import fitness_function
 
 from numeric import *
 class algorithm:
 
-# the size of population
+	# заданное количество особей в популяции
 	pop_size = int()
 
-# the size of tournament group
+	# количество родителей, которые участвуют в размножении
 	parents_num = int()
 
-# array for the current population
+	# массив особей (популяция)
 	population = []
 
+	# массив пар родителей
 	parents = []
 
+	# массив для потомков
 	descendants = []
 
-# initialize the first population and fitness calculation
+	# иниициализирует начальную популяцию
 	def __init__(self,size,parents_n): 
 		self.pop_size = size
 
@@ -34,7 +40,7 @@ class algorithm:
 			self.population.append(person)
 			self.population.sort(reverse=True)
 
-# selection
+	# селекция 
 	def selection(self):
 		num = self.parents_num
 		i = 0
@@ -50,7 +56,7 @@ class algorithm:
 			i+=2
 
 
-# crossingover
+	# кроссинговер
 	def crossingover(self):
 		n = 0
 		self.descendants = []
@@ -77,13 +83,13 @@ class algorithm:
 			self.descendants.append(d2)
 			n += 1
 
-# mutation
+	# мутация
 	def mutation(self):
 		Fit = fitness_function()
 
 		for x in xrange(0,len(self.descendants)):
 			chromosome = float_to_binary( self.descendants[x]['value'])
-			gen = random.randint(0,63)
+			gen = random.randint(25,63)
 
 			if chromosome[gen] == '0':
 				chromosome = chromosome[:gen] + '1' + chromosome[gen+1:]
@@ -93,7 +99,7 @@ class algorithm:
 			self.descendants[x]['value'] = binary_to_float(chromosome)
 			self.descendants[x]['fitness'] = Fit.f(self.descendants[x]['value'])
 
-# reduction
+	# редукция
 	def reduction(self):
 		Fit = fitness_function()
 
@@ -105,7 +111,7 @@ class algorithm:
 		self.population = self.population[:self.pop_size]
 	
 
-# population maximum
+	# определяет максимальное значение в популяции
 	def pop_max(self):
 		Fit = fitness_function()
 		max = -999999999
@@ -121,7 +127,7 @@ class algorithm:
 
 
 
-# print the current population
+	# выводит текущую популяцию
 	def print_population(self):
 		for x in xrange(0,self.pop_size):
 			print '[',x,']',

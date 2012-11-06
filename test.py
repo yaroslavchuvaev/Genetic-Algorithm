@@ -1,3 +1,5 @@
+# -*- coding: UTF-8 -*-
+
 from fitness import *
 
 Fit = fitness_function()
