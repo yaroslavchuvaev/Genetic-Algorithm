@@ -94,7 +94,7 @@ class algorithm:
 			if chromosome[gen] == '0':
 				chromosome = chromosome[:gen] + '1' + chromosome[gen+1:]
 			else:
-				chromosome = chromosome[:gen] + '1' + chromosome[gen+1:]
+				chromosome = chromosome[:gen] + '0' + chromosome[gen+1:]
 
 			self.descendants[x]['value'] = binary_to_float(chromosome)
 			self.descendants[x]['fitness'] = Fit.f(self.descendants[x]['value'])
@@ -117,8 +117,10 @@ class algorithm:
 		print '####################################################'
 		print 'Макс. значение популяции в точке x=',
 		print self.population[0]['value']
-		print ' f(x)=',
+		print 'f(x)=',
 		print self.population[0]['fitness'],' / ',Fit.optium
+		print '[ min / max ] [',
+		print self.population[-1]['value'],';',self.population[0]['value'],']'
 		print '####################################################'
 		print
 		print
